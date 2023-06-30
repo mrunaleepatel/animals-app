@@ -8,16 +8,37 @@ const router = express.Router()
 // ROUTES
 
 // INDEX - GET
-router.get("/", (req, res) => {
-    Animals.find({}).then(animals => {
-        res.render("animals/index.ejs", { animals })
-    })
+router.get("/", async (req, res) => {
+    const allAnimals = await Animals.find({})
+    res.render(
+        'animals/index.ejs', { animals: allAnimals }
+    )
 })
-
 // NEW - GET
 router.get("/new", (req, res) => {
     res.render("animals/new.ejs")
 })
+
+// CREATE - POST
+router.post('/', async (req, res) => {
+    console.log(req.body)
+    if(req.body.extinct === 'on'){
+        req.body.extinct = true;
+    } else {
+        req.body.extinct = false;
+    }
+    await Animals.create(req.body);
+    res.redirect('/animal');
+})
+
+// SHOW - GET
+router.get("/:id", async (req, res) => {
+    const id = req.params.id
+    const animal = await Animals.findById(id)
+    const extinctClass = animal.extinct ? "yes" : "no"
+    res.render("animals/show.ejs", { animal, extinctClass, id })
+})
+
 
 // DESTROY - DELETE
 router.delete("/:id", async (req, res) => {
@@ -30,31 +51,21 @@ router.delete("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
     const id = req.params.id
     req.body.extinct = req.body.extinct === "on" ? true : false
+    console.log(req.body)
     await Animals.findByIdAndUpdate(id, req.body)
     res.redirect("/animal")
 })
 
-// CREATE - POST
-router.post("/", async (req, res) => {
-    req.body.extinct = req.body.extinct === "on" ? true : false
-    await Animals.create(req.body).then(() => {
-        res.redirect("/animal")
-    })
-})
+
 
 // EDIT - GET
 router.get("/:id/edit", async (req, res) => {
     const id = req.params.id
     const animal = await Animals.findById(id)
     res.render("animals/edit.ejs", { animal, id })
+    
 })
 
-// SHOW - GET
-router.get("/:id", async (req, res) => {
-    const id = req.params.id
-    const animal = await Animals.findById(id)
-    const readyClass = animal.extinct ? "yes" : "no"
-    res.render("animals/show.ejs", { animals, readyClass, id })
-})
+
 
 module.exports = router

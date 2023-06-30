@@ -5,19 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animals</title>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Comfortaa&family=Patua+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>The Animals App</h1>
-    <a href="/animal/new"><button>Create New Animal</button></a>
-
-    <ul>
-        <% for(let i = 0; i < animals.length; i++){ %>
-
-            <li><a href="/animal/<%= animals[i]._id %>"><%= animals[i].name %></a></li>
-
-        <% } %>
-    </ul>
+    <h1>The Animals</h1>
+    <main>
+        <div>
+            <button><a href="/animal/new">Create New Animal</a></button>
+            <% for (animal of animals) { %>
+                <article>
+                    <a href="/animal/<%= animal._id %>">
+                        <h2>
+                            <%= animal.species %>
+                        </h2>
+                    </a>
+                </article>
+            <% } %>
+        </div>
+    </main>
 
         
    

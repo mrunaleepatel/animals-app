@@ -5,25 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animals</title>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Comfortaa&family=Patua+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <h1>Animals App</h1>
-    <h2>Create an Animal</h2>
-    <form action="/animal" method="post">
-        <label for="species">Species:</label>
-        <input type="text" name="species" placeholder="name of species"/>
-
-        <label for="extinct">Extinct:</label>
-        <input type="checkbox" name="extinct" checked/>
-
-        <label for="location">Location:</label>
-        <input type="text" name="location" placeholder="name of location"/>
-
-        <label for="lifeExpectancy">Life Expectancy:</label>
-        <input type="number" name="lifeExpectancy" placeholder="life span"/>
-
-        <input type="submit" value="Submit">
-    </form>
+    <main>
+        <div>
+             <form action="/animal" method="post">
+                 <fieldset>
+                    <legend>Create a new animal</legend>
+                    <label>Species: <input type="text" name="species" placeholder="name of species"/></label>
+                    <label>Location: <input type="text" name="location" placeholder="name of location"/></label>
+                    <label>Extinct:  <input type="checkbox" name="extinct" checked/></label>
+                    <label>Life Expectancy:  <input type="number" name="lifeExpectancy" placeholder="life span"/></label>
+                    <input type="submit" value="Submit">
+                </fieldset>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

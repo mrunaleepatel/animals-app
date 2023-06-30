@@ -5,15 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Comfortaa&family=Patua+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>Animals App</h1>
-    <h2>Edit <%= animal.species %></h2>
-    <form action="/animal/<%= id %>?_method=put" method="put">
-        <input type="text" name="species" placeholder="name of species" value="<%= animal.speicies %>"/>
-        <input type="checkbox" name="extinct" value=" <%= animal.extinct ? "checked" : "" %>"/>
-        <input type="text" name="location" placeholder="name of location" value="<%= animal.location %>"/>
-        <input type="number" name="lifeExpectancy" placeholder="life span" value="<%= animal.lifeExpectancy %>"/>
-    </form>
+    <h1>The Animal</h1>
+    <main>
+        <div>
+            <form method="post" action="/animal/<%=animal._id%>?_method=put">
+            <fieldset>
+                <legend>Edit <%= animal.species %></legend>
+                <label>Species: <input type="text" name="species" placeholder="name of species" value="<%= animal.speicies %>"/></label>
+
+                <label>Extinct: 
+                    
+                    <input 
+                    type="checkbox" 
+                    name="extinct" 
+                    <%= animal.extinct ? "checked" : ""  %>/></label>
+
+                <label>Life Expectancy: <input type="number" name="lifeExpectancy" placeholder="life span" value="<%= animal.lifeExpectancy %>"/></label>
+
+                <label>Location: <input type="text" name="location" placeholder="name of location" value="<%= animal.location %>"/></label>
+
+                <input type="submit" value="edit animal"/>
+            </fieldset>
+            </form>
+        </div>
 </body>
 </html>
