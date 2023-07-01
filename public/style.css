@@ -5,12 +5,14 @@ body {
 h1 {
     font-family: 'Permanent Marker', cursive;
     font-size: 50px;
+    padding-left: 10px;
 }
 
 h2 {
     font-family: 'Comfortaa', cursive;
-    font-size: 20px;
+    font-size: 17px;
     color:darkslateblue;
+    padding-left: 10px;
 }
 
 h3 {
@@ -124,6 +126,7 @@ input[type="submit"]:active {
 
 article {
     background-color: #f2f2f2;
-    padding: 5px;
-    margin-bottom: 20px;
+    padding: 1px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }

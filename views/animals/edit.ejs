@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>The Animal</h1>
+    <h1>Jungle Junction</h1>
     <main>
         <div>
             <form method="post" action="/animal/<%=animal._id%>?_method=put">
@@ -31,8 +31,10 @@
                 <label>Location: <input type="text" name="location" placeholder="name of location" value="<%= animal.location %>"/></label>
 
                 <input type="submit" value="edit animal"/>
+                <input type="submit" value="back to main"/>
             </fieldset>
             </form>
         </div>
+    </main>
 </body>
 </html>
